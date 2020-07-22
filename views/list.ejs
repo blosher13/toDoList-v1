@@ -6,7 +6,21 @@
   </head>
   <body>
 
-      <h1><%= thisDay %> Todo List </h1>
+      <h1><%= thisDay %></h1>
+
+      <ul>
+
+        <% for(var x = 0; x < newItemList.length; x++){ %>
+          <li><%= newItemList[x] %></li>
+        <% } %>
+
+      </ul>
+
+      <form class="" action="/" method="post">
+        <input type="text" name="newTaskInput" placeholder="Task">
+        <button type="submit" name="Add task">Add task</button>
+
+      </form>
 
 
   </body>

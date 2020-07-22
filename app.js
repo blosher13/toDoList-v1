@@ -10,13 +10,14 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //actual code
 
+  var newTasksApp = ["Meditation", "Coding","Workout"];
+
 app.get("/", function(req, res){
 
   var today = new Date();
 
   var options = {
     weekday: 'long',
-    year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
@@ -24,13 +25,21 @@ app.get("/", function(req, res){
   var day = today.toLocaleDateString("en-US", options);
 
   res.render("list", {
-    thisDay: day
+    thisDay: day,
+    newItemList: newTasksApp
   });
 
 });
 
+app.post("/", function (req, res) {
+  newTasksApp.push(req.body.newTaskInput);
+  res.redirect("/");
+});
+
+
+
 
 // starting server code
-app.listen(3000, function(){
+app.listen(4000, function(){
   console.log("Server has started");
 });
